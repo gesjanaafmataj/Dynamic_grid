@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .row {
+      display: table-row;
+    }
+
+    .header {
+      display: table-cell;
+      font-weight: bold;
+      padding: 8px;
+      border-bottom: 1px solid #d22c2c;
+    }
+
+    .cell {
+      display: table-cell;
+      padding: 8px;
+      border-bottom: 1px solid #3133ad;
+    }
+  </style>
+</head>
+<body>
+    <div class="table">
+        <div class="row">
+          <div class="header">Name</div>
+          <div class="header">Surname</div>
+          <div class="header">Email</div>
+          <div class="header">Gender</div>
+          <div class="header">Age</div>
+        </div>
+
+    <script>
+      const obj = {
+        layout: {
+          columns: ['Name', 'Surname', 'Email', 'Gender', 'Age'],
+        },
+        rows: [
+          ['Timmy', 'Snasdell', 'tsnasdell0@senate.gov', 'Male', 58],
+          ['Caleb', 'Nisen', 'cnisen1@xing.com', 'Male', 21],
+          ['Bil', 'Ohrt', 'bohrt2@opensource.org', 'Male', 58],
+        ],
+      };
+
+      const table = document.querySelector('.table');
+
+      const headerRow = document.createElement('div');
+      headerRow.classList.add('row');
+      obj.layout.columns.forEach((column) => {
+        const headerCell = document.createElement('div');
+        headerCell.classList.add('header');
+        headerCell.textContent = column;
+        headerRow.appendChild(headerCell);
+      });
+      table.appendChild(headerRow);
+
+      obj.rows.forEach((rowData) => {
+        const dataRow = document.createElement('div');
+        dataRow.classList.add('row');
+        rowData.forEach((cellData) => {
+          const dataCell = document.createElement('div');
+          dataCell.classList.add('cell');
+          dataCell.textContent = cellData;
+          dataRow.appendChild(dataCell);
+        });
+        table.appendChild(dataRow);
+      });
+    </script>
+  </div>
+</body>
+</html>
